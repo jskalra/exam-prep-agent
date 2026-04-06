@@ -9,17 +9,18 @@ import json
 
 # Future: set LLM_PROVIDER=ollama to use local model
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "claude")
-CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-5")
+CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-5-20250929")
 
 _client = None
 
 
 def get_client():
     global _client
-    if _client is None:
-        if LLM_PROVIDER == "claude":
-            _client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
-        # Future: elif LLM_PROVIDER == "ollama": ...
+    # Always recreate if key changed
+    current_key = os.getenv("ANTHROPIC_API_KEY", "")
+    if _client is None or getattr(_client, "_api_key", "") != current_key:
+        _client = anthropic.Anthropic(api_key=current_key)
+        _client._api_key = current_key
     return _client
 
 
