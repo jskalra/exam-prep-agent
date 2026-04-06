@@ -3,6 +3,46 @@ F=ma Exam Prep — Main Streamlit App
 Run: streamlit run app.py
 """
 
+import os
+import streamlit as st
+from dotenv import load_dotenv
+load_dotenv()
+
+# ── Page config ──────────────────────────────────────────────────────────────
+st.set_page_config(
+    page_title="Exam Prep Agent",
+    page_icon="⚡",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# ── API Key Gate ──────────────────────────────────────────────────────────────
+def api_key_gate():
+    if st.session_state.get("authenticated"):
+        os.environ["ANTHROPIC_API_KEY"] = st.session_state.api_key
+        return
+
+    env_key = os.getenv("ANTHROPIC_API_KEY", "")
+    if env_key.startswith("sk-ant-"):
+        st.session_state.api_key = env_key
+        st.session_state.authenticated = True
+        return
+
+    st.title("⚡ Exam Prep Agent")
+    st.markdown("Enter your [Anthropic API key](https://console.anthropic.com) to get started.")
+    api_key = st.text_input("Anthropic API Key", type="password", placeholder="sk-ant-...")
+    if st.button("Start", type="primary"):
+        if api_key.startswith("sk-ant-"):
+            os.environ["ANTHROPIC_API_KEY"] = api_key
+            st.session_state.api_key = api_key
+            st.session_state.authenticated = True
+            st.rerun()
+        else:
+            st.error("Invalid API key — should start with sk-ant-")
+    st.stop()
+
+api_key_gate()
+
 import streamlit as st
 from modules.exam_loader import load_exam, list_exams, get_exam_context, get_topic_names, get_subtopics, get_formulas
 from modules.tutor import explain_concept, get_hint, check_answer
