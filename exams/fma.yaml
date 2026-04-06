@@ -1,0 +1,111 @@
+name: "F=ma Physics Exam"
+short_name: "F=ma"
+description: "The first round of the USAPhO selection process, testing mechanics and some E&M"
+exam_url: "https://www.aapt.org/physicsteam/2025/fma.cfm"
+past_papers_url: "https://www.aapt.org/physicsteam/pastexams.cfm"
+difficulty: "High School Competitive"
+duration_minutes: 75
+num_questions: 25
+question_type: "Multiple Choice (5 options)"
+
+topics:
+  - name: Kinematics
+    weight: high
+    subtopics:
+      - 1D and 2D motion
+      - Projectile motion
+      - Relative velocity
+      - Circular motion kinematics
+    key_formulas:
+      - "v = u + at"
+      - "s = ut + ½at²"
+      - "v² = u² + 2as"
+
+  - name: Newton's Laws & Dynamics
+    weight: high
+    subtopics:
+      - Free body diagrams
+      - Friction (static and kinetic)
+      - Tension and normal forces
+      - Pseudo forces in non-inertial frames
+    key_formulas:
+      - "F = ma"
+      - "f = μN"
+
+  - name: Work, Energy & Power
+    weight: high
+    subtopics:
+      - Work-energy theorem
+      - Conservation of energy
+      - Potential energy (gravitational, spring)
+      - Power
+    key_formulas:
+      - "W = Fd cosθ"
+      - "KE = ½mv²"
+      - "PE = mgh"
+      - "PE_spring = ½kx²"
+
+  - name: Momentum & Collisions
+    weight: medium
+    subtopics:
+      - Linear momentum conservation
+      - Elastic and inelastic collisions
+      - Center of mass
+      - Impulse
+    key_formulas:
+      - "p = mv"
+      - "J = Δp = FΔt"
+
+  - name: Rotational Mechanics
+    weight: medium
+    subtopics:
+      - Torque
+      - Moment of inertia
+      - Angular momentum
+      - Rolling without slipping
+    key_formulas:
+      - "τ = rF sinθ"
+      - "L = Iω"
+      - "v = rω"
+
+  - name: Oscillations & Waves
+    weight: medium
+    subtopics:
+      - Simple harmonic motion
+      - Spring-mass systems
+      - Simple pendulum
+      - Energy in SHM
+    key_formulas:
+      - "T = 2π√(m/k)"
+      - "T = 2π√(l/g)"
+      - "x = A cos(ωt + φ)"
+
+  - name: Gravitation
+    weight: low
+    subtopics:
+      - Newton's law of gravitation
+      - Orbital mechanics
+      - Gravitational potential energy
+      - Escape velocity
+    key_formulas:
+      - "F = Gm₁m₂/r²"
+      - "v_esc = √(2GM/r)"
+
+  - name: Fluid Mechanics
+    weight: low
+    subtopics:
+      - Pressure and buoyancy
+      - Archimedes' principle
+      - Continuity equation
+      - Bernoulli's equation
+    key_formulas:
+      - "P = ρgh"
+      - "F_b = ρVg"
+      - "A₁v₁ = A₂v₂"
+
+tips:
+  - "Dimensional analysis can eliminate wrong answers quickly"
+  - "Draw free body diagrams for every dynamics problem"
+  - "Energy conservation is often faster than Newton's laws"
+  - "Check limiting cases (θ→0, m→∞) to verify answers"
+  - "Many problems have elegant symmetry — look for it"
